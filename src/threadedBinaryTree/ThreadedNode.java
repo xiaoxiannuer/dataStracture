@@ -5,6 +5,7 @@ public class ThreadedNode {
     int data;
     ThreadedNode leftNode;
     ThreadedNode rightNode;
+    //等于0表示子节点，等于1表示前驱节点后继节点
     int leftType;
     int rightType;
     public ThreadedNode(int data){
