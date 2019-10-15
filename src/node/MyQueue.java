@@ -35,7 +35,14 @@ public class MyQueue {
         elements=newArr;
         return element;
     }
-
+    //查看栈顶元素
+    public int peek() {
+        //栈中没有元素
+        if(elements.length==0) {
+            throw new RuntimeException("stack is empty");
+        }
+        return elements[0];
+    }
     //判断队列是否为空
     public boolean isEmpty() {
         return elements.length==0;

@@ -1,5 +1,6 @@
 package graph;
 
+import node.MyQueue;
 import node.MyStack;
 
 public class Graph {
@@ -8,6 +9,7 @@ public class Graph {
     public int[][] adjMat;
     private int currentIndex;
     MyStack myStack=new MyStack();
+    MyQueue myQueue=new MyQueue();
     public Graph(int size) {
         vertex=new Vertex[size];
         adjMat=new int[size][size];
@@ -63,5 +65,29 @@ public class Graph {
 
         }
 
+    }
+
+    /**
+     * 广度优先搜寻算法遍历
+     */
+    public void wfs(){
+        vertex[0].visited=true;
+        myQueue.add(0);
+        System.out.println(vertex[0].getData());
+        out:while (!myQueue.isEmpty()){
+            for (int i=currentIndex+1;i<vertex.length;i++){
+                if (adjMat[currentIndex][i]==1&&vertex[i].visited==false){
+                    myQueue.add(i);
+                    System.out.println(vertex[i].getData());
+                    vertex[i].visited=true;
+                    continue out;
+                }
+            }
+           myQueue.poll();
+            if (!myQueue.isEmpty()){
+                currentIndex=myQueue.peek();
+            }
+
+        }
     }
 }
